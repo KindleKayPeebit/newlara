@@ -18,6 +18,7 @@ Auth::routes();
 
 Route::get('/admin/dashboard', 'Backend\DashboardController@index')->name('admin.dashboard');
 Route::get('/admin/profile', 'Backend\DashboardController@profile')->name('admin.profile');
+Route::post('/admin/addprofile', 'Backend\DashboardController@updateProfile')->name('admin.addprofile');
 Route::get('/admin/users', 'Backend\UserController@index')->name('admin.users');
 
 Route::post('send-sms','SmsController@store')->name('send-sms');

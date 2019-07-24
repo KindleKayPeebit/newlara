@@ -10,18 +10,19 @@
                   <p class="card-category">Complete your profile</p>
                 </div>
                 <div class="card-body">
-                  <form>
+                  <form method="POST" action="{{route('admin.addprofile')}}">
+                    @csrf
                     <div class="row">
                      <div class="col-md-5">
                         <div class="form-group">
                           <label class="bmd-label-floating">Username</label>
-                          <input type="text" class="form-control" value="{{Auth::user()->name}}">
+                          <input type="text" name="name" class="form-control" value="{{Auth::user()->name}}">
                         </div>
                       </div>
                       <div class="col-md-7">
                         <div class="form-group">
                           <label class="bmd-label-floating">Email address</label>
-                          <input type="email" class="form-control" value="{{Auth::user()->email}}">
+                          <input type="email" name="email" class="form-control" value="{{Auth::user()->email}}">
                         </div>
                       </div>
                     </div>
@@ -29,13 +30,13 @@
                       <div class="col-md-6">
                         <div class="form-group">
                           <label class="bmd-label-floating">Fist Name</label>
-                          <input type="text" class="form-control" value="{{Auth::user()->first_name}}">
+                          <input type="text"  name="first_name" class="form-control" value="{{Auth::user()->first_name}}">
                         </div>
                       </div>
                       <div class="col-md-6">
                         <div class="form-group">
                           <label class="bmd-label-floating">Last Name</label>
-                          <input type="text" class="form-control" value="{{Auth::user()->last_name}}">
+                          <input type="text" name="last_name" class="form-control" value="{{Auth::user()->last_name}}">
                         </div>
                       </div>
                     </div>
@@ -43,7 +44,7 @@
                       <div class="col-md-12">
                         <div class="form-group">
                           <label class="bmd-label-floating">Adress</label>
-                          <input type="text" class="form-control" value="{{Auth::user()->address}}">
+                          <input type="text" name="address" class="form-control" value="{{Auth::user()->address}}">
                         </div>
                       </div>
                     </div>
@@ -51,19 +52,19 @@
                       <div class="col-md-4">
                         <div class="form-group">
                           <label class="bmd-label-floating">City</label>
-                          <input type="text" class="form-control" value="{{Auth::user()->city}}">
+                          <input type="text" name="city" class="form-control" value="{{Auth::user()->city}}">
                         </div>
                       </div>
                       <div class="col-md-4">
                         <div class="form-group">
                           <label class="bmd-label-floating">Country</label>
-                          <input type="text" class="form-control" value="{{Auth::user()->country}}">
+                          <input type="text" name="country" class="form-control" value="{{Auth::user()->country}}">
                         </div>
                       </div>
                       <div class="col-md-4">
                         <div class="form-group">
                           <label class="bmd-label-floating">Postal Code</label>
-                          <input type="text" class="form-control" value="{{Auth::user()->postal_code}}">
+                          <input type="text" name="postal_code" class="form-control" value="{{Auth::user()->postal_code}}">
                         </div>
                       </div>
                     </div>
@@ -72,9 +73,17 @@
                         <div class="form-group">
                           <label>About Me</label>
                           <div class="form-group">
-                            <label class="bmd-label-floating"> Lamborghini Mercy, Your chick she so thirsty, I'm in that two seat Lambo.</label>
-                            <textarea class="form-control" rows="5">{{Auth::user()->description}}</textarea>
+                            <!-- <label class="bmd-label-floating"> Lamborghini Mercy, Your chick she so thirsty, I'm in that two seat Lambo.</label> -->
+                            <textarea class="form-control" rows="5" name="about_me">{{Auth::user()->about_me}}</textarea>
                           </div>
+                        </div>
+                      </div>
+                    </div>
+                    <div class="row">
+                      <div class="col-md-12">
+                        <div class="form-group">
+                          <label class="bmd-label-floating">Contact Number</label>
+                          <input type="text" name="contact_number" class="form-control" value="{{Auth::user()->contact_number}}">
                         </div>
                       </div>
                     </div>

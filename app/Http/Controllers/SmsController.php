@@ -5,10 +5,10 @@ use Twilio\Jwt\ClientToken;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Validator;
 use GuzzleHttp\Exception\GuzzleException;
-//use GuzzleHttp\Client;
 use Session;
 use App\User;
 use Twilio\Rest\Client;
+
 class SmsController extends Controller
 {
     protected $code, $smsVerifcation;
