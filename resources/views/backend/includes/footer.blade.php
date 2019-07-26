@@ -1,28 +1,6 @@
       <footer class="footer">
         <div class="container-fluid">
           <nav class="float-left">
-           <!--  <ul>
-              <li>
-                <a href="https://www.creative-tim.com">
-                  Creative Tim
-                </a>
-              </li>
-              <li>
-                <a href="https://creative-tim.com/presentation">
-                  About Us
-                </a>
-              </li>
-              <li>
-                <a href="http://blog.creative-tim.com">
-                  Blog
-                </a>
-              </li>
-              <li>
-                <a href="https://www.creative-tim.com/license">
-                  Licenses
-                </a>
-              </li>
-            </ul> -->
           </nav>
           <div class="copyright float-right">
             &copy;
@@ -66,7 +44,7 @@
   <!--  Plugin for the Sliders, full documentation here: http://refreshless.com/nouislider/ -->
   <script src="{{asset('backend/assets/js/plugins/nouislider.min.js')}}"></script>
   <!-- Include a polyfill for ES6 Promises (optional) for IE11, UC Browser and Android browser support SweetAlert -->
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/core-js/2.4.1/core.js')}}"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/core-js/2.4.1/core.js"></script>
   <!-- Library for adding dinamically elements -->
   <script src="{{asset('backend/assets/js/plugins/arrive.min.js')}}"></script>
   <!--  Google Maps Plugin    -->
@@ -79,6 +57,7 @@
   <script src="{{asset('backend/assets/js/material-dashboard.js?v=2.1.1')}}" type="text/javascript"></script>
   <!-- Material Dashboard DEMO methods, don't include it in your project! -->
   <script src="{{asset('backend/assets/demo/demo.js')}}"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-sweetalert/1.0.1/sweetalert.min.js"></script>
   <script>
     $(document).ready(function() {
       $().ready(function() {
@@ -271,6 +250,112 @@
        toastr.info("<?php echo Session::get('info') ?>");
     <?php }?>
   </script>
-</body>
+<script>
+  $(document).ready(function(){
+    $('[id^="deleteBtn"]').click(function(){
+       var href = $(this).attr('data-url');
+       Swal.fire({
+        title: 'Are you sure to delete user?',
+        text: "You won't be able to revert this!",
+        type: 'warning',
+        showCancelButton: true,
+        confirmButtonColor: '#3085d6',
+        cancelButtonColor: '#d33',
+        confirmButtonText: 'Yes, delete it!',
+        closeOnConfirm: false,
+        closeOnCancel: true 
+      }).then((result) => {
+        if (result.value) {
+          window.location.href=href;
+        } else  {   return false; }
+       })
+    });
+  });
+   $(document).ready(function(){
+    $('[id^="blockUnblock"]').click(function(){
+       var href = $(this).attr('data-url');
+       var status = $(this).attr('data-status');
+       if(status ==1) {
+        var title = 'Are you sure to block the user.';
+        var btnmsg ='Yes, block it!'; }
+       else {  var title = 'Are you sure to unblock the user.';
+        var btnmsg ='Yes, unblock it!'; }
+       Swal.fire({
+        title: title,
+        text: "You won't be able to revert this!",
+        type: 'warning',
+        showCancelButton: true,
+        confirmButtonColor: '#3085d6',
+        cancelButtonColor: '#d33',
+        confirmButtonText: btnmsg,
+        closeOnConfirm: false,
+        closeOnCancel: true 
+      }).then((result) => {
+        if (result.value) {
+          window.location.href=href;
+        } else  {   return false; }
+       })
+    });
+  });
+   $(document).ready(function(){
+    $('[id^="deleteBtn1"]').click(function(){
+       var href = $(this).attr('data-url');
+       Swal.fire({
+        title: 'Are you sure to delete sms?',
+        text: "You won't be able to revert this!",
+        type: 'warning',
+        showCancelButton: true,
+        confirmButtonColor: '#3085d6',
+        cancelButtonColor: '#d33',
+        confirmButtonText: 'Yes, delete it!',
+        closeOnConfirm: false,
+        closeOnCancel: true 
+      }).then((result) => {
+        if (result.value) {
+          window.location.href=href;
+        } else  {   return false; }
+       })
+    });
+  });
+   $(document).ready(function(){
+    $('[id^="blockUnblock1"]').click(function(){
+       var href = $(this).attr('data-url');
+       var status = $(this).attr('data-status');
+       if(status ==1) {
+        var title = 'Are you sure to block the sms.';
+        var btnmsg ='Yes, block it!'; }
+       else {  var title = 'Are you sure to unblock the sms.';
+        var btnmsg ='Yes, unblock it!'; }
+       Swal.fire({
+        title: title,
+        text: "You won't be able to revert this!",
+        type: 'warning',
+        showCancelButton: true,
+        confirmButtonColor: '#3085d6',
+        cancelButtonColor: '#d33',
+        confirmButtonText: btnmsg,
+        closeOnConfirm: false,
+        closeOnCancel: true 
+      }).then((result) => {
+        if (result.value) {
+          window.location.href=href;
+        } else  {   return false; }
+       })
+    });
+  });
+</script>
+<script type="text/javascript">
+  function countChar(val, id) {
+        var len = val.value.length;
+        if (len >= 1600) {
+          val.value = val.value.substring(0, 1600);
+        } else {
+          var leftlen = 1600 - len;
+          $('#'+id).text('Characters left '+ leftlen);
+        }
+      };
 
+</script>
+
+</body>
 </html>

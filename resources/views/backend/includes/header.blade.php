@@ -17,6 +17,7 @@
   <link href="{{asset('backend/assets/css/material-dashboard.css?v=2.1.1')}}" rel="stylesheet" />
   <!-- CSS Just for demo purpose, don't include it in your project -->
   <link href="{{asset('backend/assets/demo/demo.css')}}" rel="stylesheet" />
+  <link href=https://cdnjs.cloudflare.com/ajax/libs/bootstrap-sweetalert/1.0.1/sweetalert.cssrel="stylesheet" />
 </head>
 
 <body class="">
@@ -35,10 +36,22 @@
               <p>Dashboard</p>
             </a>
           </li>
-          <li class="nav-item {{ Helper::isActiveRoute('admin.users') }}">
+          <li class="nav-item {{ Helper::isActiveRoute('admin.users') }}{{ Helper::isActiveRoute('admin.edituser') }} ">
             <a class="nav-link" href="{{route('admin.users')}}">
               <i class="material-icons">person</i>
               <p>Users</p>
+            </a>
+          </li>
+         <li class="nav-item {{ Helper::isActiveRoute('admin.sms') }} {{ Helper::isActiveRoute('admin.sms.add') }}  {{ Helper::isActiveRoute('admin.sms.edit') }}">
+            <a class="nav-link" href="{{route('admin.sms')}}">
+              <i class="material-icons">library_books</i>
+              <p>All SMS</p>
+            </a>
+          </li>
+           <li class="nav-item {{ Helper::isActiveRoute('admin.sendSms') }}">
+            <a class="nav-link" href="{{route('admin.sendSms')}}">
+              <i class="material-icons">pageview</i>
+              <p>SMS Overview</p>
             </a>
           </li>
          </ul>

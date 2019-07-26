@@ -7,10 +7,10 @@
               <div class="card card-stats">
                 <div class="card-header card-header-warning card-header-icon">
                   <div class="card-icon">
-                    <i class="material-icons">store</i>
+                    <i class="material-icons">phone</i>
                   </div>
-                  <p class="card-category">Revenue</p>
-                  <h3 class="card-title">$34,245</h3>
+                  <p class="card-category">Rgistered Numbers</p>
+                  <h3 class="card-title">10</h3>
                 </div>
                 <div class="card-footer">
                   <div class="stats">
@@ -23,10 +23,10 @@
               <div class="card card-stats">
                 <div class="card-header card-header-success card-header-icon">
                   <div class="card-icon">
-                    <i class="material-icons">store</i>
+                    <i class="material-icons">feedback</i>
                   </div>
-                  <p class="card-category">Revenue</p>
-                  <h3 class="card-title">$34,245</h3>
+                  <p class="card-category">All SMS</p>
+                  <h3 class="card-title">343</h3>
                 </div>
                 <div class="card-footer">
                   <div class="stats">

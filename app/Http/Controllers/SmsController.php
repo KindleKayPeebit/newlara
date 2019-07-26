@@ -32,6 +32,7 @@ class SmsController extends Controller
 					if($check == '21211') {
                         Session::flash('warning', 'Something went wrong. Please check your number.');
 					} else {
+						
 						Session::flash('success1', 'Please check your inbox for  OTP!');
 						Session::flash('contact_number',$request->contact_number); 
 					}
@@ -44,6 +45,7 @@ class SmsController extends Controller
 				    if($check == '21211') {
                         Session::flash('warning', 'Something went wrong. Please check your number.');
 					} else {
+						
 				    	Session::flash('contact_number',$request->contact_number); 
 						Session::flash('success1', 'Please check your inbox for  OTP!');
 				    }
@@ -90,9 +92,9 @@ class SmsController extends Controller
 				                           array("from" => "+447480783867", "body" => $request->code.' is your twilio follow ups verification code.')
 				                  );
 
-			return $message->sid;
+			  return $message->sid;
 			} catch (\Exception $e) {		
-			return $e->getCode();
+			  return $e->getCode();
 			}
 	 }
 	 public function sendSms1($number) {
@@ -112,5 +114,4 @@ class SmsController extends Controller
 			 return $e->getCode();
 			}
 	 }
-
 }

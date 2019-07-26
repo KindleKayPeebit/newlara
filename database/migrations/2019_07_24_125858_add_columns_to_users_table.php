@@ -4,7 +4,7 @@ use Illuminate\Support\Facades\Schema;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
 
-class AddColumnsInUserTable extends Migration
+class AddColumnsToUsersTable extends Migration
 {
     /**
      * Run the migrations.
@@ -14,7 +14,13 @@ class AddColumnsInUserTable extends Migration
     public function up()
     {
         Schema::table('users', function (Blueprint $table) {
-            $table->string('contact_number');
+           $table->string('first_name');
+           $table->string('last_name');
+           $table->string('address');
+           $table->string('city');
+           $table->string('country');
+           $table->string('postal_code');
+           $table->text('about_me');
         });
     }
 
