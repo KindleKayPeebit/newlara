@@ -31,7 +31,7 @@
                       <thead class=" text-primary">
                         <th> S.No</th>
                         <th> Title </th>
-                       <!--  <th> Message </th> -->
+                        <th> Message </th>
                         <th> Status </th>
                         <th> Action </th>
                       </thead>
@@ -41,8 +41,8 @@
                         <tr>
                           <td><?= ++$i; ?></td>
                           <td>{{$value->title}}</td>
-                         <!--  <td>{{$value->message}}</td> -->
-                          <td>@if($value->status ==1){{ 'Un-block'}}@else {{'Block'}}@endif </td>
+                          <td>{{$value->message}}</td>
+                          <td>@if($value->status ==1){{ 'Un-blocked '}}@else {{'Blocked'}}@endif </td>
                            <td class="td-actions ">
                               <a href="{{ url('/admin/sms/edit', $value->id) }}" rel="tooltip" title="Edit SMS" class="btn btn-primary btn-link btn-sm">
                                 <i class="material-icons">edit</i> </a>
@@ -61,7 +61,6 @@
                       </tbody>
                     </table>
                     {!! $sms->render() !!}
-                    
                     @else
                       <div class="alert alert- alert-with-icon" data-notify="container">
                       <i class="material-icons" data-notify="icon">add_alert</i>

@@ -41,7 +41,7 @@
                           <td><?= ++$i; ?></td>
                           <td>{{$user->name}}</td>
                           <td>{{$user->contact_number}}</td>
-                          <td>@if($user->status ==1){{ 'Block'}}@else {{'Un-block'}}@endif </td>
+                          <td>@if($user->status ==1){{ 'Un-blocked '}}@else {{'Blocked'}}@endif </td>
                            <td class="td-actions ">
                               <a href="{{ url('/admin/edituser', $user->id) }}" rel="tooltip" title="Edit User" class="btn btn-primary btn-link btn-sm">
                                 <i class="material-icons">edit</i> </a>

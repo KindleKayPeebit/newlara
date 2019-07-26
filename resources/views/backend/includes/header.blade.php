@@ -17,7 +17,8 @@
   <link href="{{asset('backend/assets/css/material-dashboard.css?v=2.1.1')}}" rel="stylesheet" />
   <!-- CSS Just for demo purpose, don't include it in your project -->
   <link href="{{asset('backend/assets/demo/demo.css')}}" rel="stylesheet" />
-  <link href=https://cdnjs.cloudflare.com/ajax/libs/bootstrap-sweetalert/1.0.1/sweetalert.cssrel="stylesheet" />
+  <link href=https://cdnjs.cloudflare.com/ajax/libs/bootstrap-sweetalert/1.0.1/sweetalert.css" rel="stylesheet" />
+   <link href="{{asset('backend/assets/css/bootstrap-datepicker.css')}}" rel="stylesheet" />
 </head>
 
 <body class="">
@@ -52,6 +53,12 @@
             <a class="nav-link" href="{{route('admin.sendSms')}}">
               <i class="material-icons">pageview</i>
               <p>SMS Overview</p>
+            </a>
+          </li>
+           <li class="nav-item {{ Helper::isActiveRoute('admin.smsCron') }}">
+            <a class="nav-link" href="{{route('admin.smsCron')}}">
+              <i class="material-icons">pageview</i>
+              <p>Check Cron</p>
             </a>
           </li>
          </ul>

@@ -45,6 +45,10 @@ Route::get('/admin/sms/blockUnblock/{id}', 'Backend\SmsController@blockUnblock')
 Route::get('/admin/sms/deleteUser/{id}', 'Backend\SmsController@deleteUser'); 
 
 Route::get('/admin/sendSms', 'Backend\SmsController@sendSms')->name('admin.sendSms'); ;
+Route::get('/admin/smsCron', 'Backend\SmsController@smsCron')->name('admin.smsCron'); ;
+
+
+
 
 Route::get('sendSms2','SmsController@sendSms2')->name('sendSms2');
 

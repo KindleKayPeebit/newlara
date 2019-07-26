@@ -28,13 +28,13 @@ class UserController extends Controller
      */
     public function index()
     {
-        $users =User::where('id', '!=', Auth::user()->id)->paginate(10);
+        $users =User::where('id', '!=', Auth::user()->id)->orderBy('id','desc')->paginate(10);
         return view('backend/users/user')->with('users', $users);
     }
     public function search(Request $request){
          $q = $request['q'];
          if($q != ""){
-         $users = User::where('id', '!=', Auth::user()->id)->where ('name', 'LIKE', '%' . $q . '%' )->orWhere ('contact_number', 'LIKE', '%' . $q . '%' )->paginate (10)->setPath ( '' );
+         $users = User::where('id', '!=', Auth::user()->id)->orWhere ('name', 'LIKE', '%' . $q . '%' )->orWhere ('contact_number', 'LIKE', '%' . $q . '%' )->paginate (10)->setPath ( '' );
 
          $pagination = $users->appends ( array (
             'q' => $request['q']

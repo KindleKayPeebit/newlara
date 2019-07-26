@@ -19,6 +19,13 @@
   <script src="{{asset('backend/assets/js/core/popper.min.js')}}"></script>
   <script src="{{asset('backend/assets/js/core/bootstrap-material-design.min.js')}}"></script>
   <script src="{{asset('backend/assets/js/plugins/perfect-scrollbar.jquery.min.js')}}"></script>
+  <script src="{{asset('backend/assets/js/core/jquery.min.js')}}"></script>
+
+
+  <script src="{{asset('backend/assets/js/bootstrap.js')}}" type="text/javascript"></script>
+  <script src="{{asset('backend/assets/js/bootstrap-datepicker.js')}}" type="text/javascript"></script>
+
+
   <!-- Plugin for the momentJs  -->
   <script src="{{asset('backend/assets/js/plugins/moment.min.js')}}"></script>
   <!--  Plugin for Sweet Alert -->
@@ -58,6 +65,11 @@
   <!-- Material Dashboard DEMO methods, don't include it in your project! -->
   <script src="{{asset('backend/assets/demo/demo.js')}}"></script>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-sweetalert/1.0.1/sweetalert.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datepicker/1.9.0/js/bootstrap-datepicker.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/intl-tel-input/8.4.7/js/intlTelInput.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/js/toastr.min.js"></script>
+  <link rel="stylesheet" type="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/css/toastr.min.css">
+
   <script>
     $(document).ready(function() {
       $().ready(function() {
@@ -236,9 +248,7 @@
 
     });
   </script>
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/intl-tel-input/8.4.7/js/intlTelInput.js"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/js/toastr.min.js"></script>
-    <link rel="stylesheet" type="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/css/toastr.min.css">
+
   <script>
    <?php if(Session::has('success')) { ?>
          toastr.success("<?php echo Session::get('success') ?>");
@@ -356,6 +366,16 @@
       };
 
 </script>
+<script type="text/javascript">
+   $('#datepicker').datepicker({
+       weekStart:1,
+       color: 'red'
+   });
+    $('#datepicker1').datepicker({
+       weekStart:1,
+       color: 'red'
+   });
+  </script>
 
 </body>
 </html>
