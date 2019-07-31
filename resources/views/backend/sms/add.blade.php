@@ -26,14 +26,15 @@
                         <div class="form-group">
                           <label>Message</label>
                           <div class="form-group">
-                            <!-- <label class="bmd-label-floating"> Lamborghini Mercy, Your chick she so thirsty, I'm in that two seat Lambo.</label> -->
-                            <textarea class="form-control" rows="5" name="message">{{  old('message') }}</textarea>
+                            <label class="bmd-label-floating">Maximum 1600 Characters</label>
+                            <textarea class="form-control" rows="5" name="message" onkeyup="countChar(this)">{{  old('message') }}</textarea>
+                            <div id="charNum"></div>
                           </div>
                         </div>
                       </div>
                     </div>
                     
-                    <div class="row">
+                  <!--   <div class="row">
                       <div class="col-md-6">
                         <div class="form-group">
                           <label class="bmd-label-floating">Start Date</label>
@@ -47,7 +48,7 @@
                         </div>
                      
                     </div>
-                  </div>
+                  </div> -->
                     <a href="{{route('admin.sms')}}" class="btn btn-warning pull-right">Back</a>
                     <button type="submit" class="btn btn-primary ">Add SMS</button>
                     <div class="clearfix"></div>

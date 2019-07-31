@@ -26,8 +26,9 @@
                         <div class="form-group">
                           <label>Message</label>
                           <div class="form-group">
-                            <!-- <label class="bmd-label-floating"> Lamborghini Mercy, Your chick she so thirsty, I'm in that two seat Lambo.</label> -->
-                            <textarea class="form-control" rows="5" name="message">{{ $sms['message'] ? $sms['message'] : old('message') }}</textarea>
+                            <label class="bmd-label-floating">Maximum 1600 Characters</label>
+                            <textarea class="form-control" rows="5" name="message" onkeyup="countChar(this)">{{ $sms['message'] ? $sms['message'] : old('message') }}</textarea>
+                            <div id="charNum"></div>
                           </div>
                         </div>
                       </div>

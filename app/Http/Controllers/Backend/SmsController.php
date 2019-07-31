@@ -8,6 +8,11 @@ use Illuminate\Support\Facades\Validator;
 use Auth;
 use App\Sms;
 use Session;
+use App\User;
+use DB;
+use Twilio\Rest\Client;
+
+
 
 class SmsController extends Controller
 {
@@ -69,7 +74,7 @@ class SmsController extends Controller
         }
     }
     public function edit(Request $request, $id){
-    	$sms =Sms::find($id);
+    	$sms = Sms::find($id);
     	return view('backend/sms/edit')->with('sms', $sms);;
     }
     public function editSms(Request $request, $id){
@@ -124,5 +129,119 @@ class SmsController extends Controller
     public function sendSms(){
          return view('backend/sms/smsbyday');
     }
+
+ /* sms Cron  function */
+
+  public function smsCron() {
+  
+     $allUsers =  user::where('id', '!=',1)->get();
+     $allSms   = sms::where('status','!=',0)->get();
+     if(!empty($allUsers) &&  !empty($allSms)) {
+      $i = 0;
+      
+        foreach($allUsers as $user) {
+          foreach($allSms as $sms) {
+            $result =  $this->checkSmsSentOrNot($user->id,$sms->id);
+
+            if(empty($result)) {
+              
+                 $dd = $this->sendSms1($user->contact_number,$sms->message);
+                 if($dd =='Success') {
+                   DB::table('sms_sents')->insert([
+                      'user_id' => $user->id,
+                      'sms_id' => $sms->id,
+                      'day' => 1,
+                      'message_status' => 1
+                  ]);
+                 }
+                 break;
+             } else if(!empty($result)) {
+            
+              $smsId  = $result[$i]->sms_id + 1;
+              $check = $this->checkSmsSentOrNot($user->id,$smsId);
+              if(empty($check)) { 
+                 $message = $this->getmessgae($smsId);
+                 $message = $message[0]->message;
+
+                 if(!empty($message)) {
+                  $dd = $this->sendSms1($user->contact_number,$message);
+                  if($dd == 'Success') {
+                    $day = $result[$i]->day +1 ;
+                    DB::table('sms_sents')->insert([
+                          'user_id' => $user->id,
+                          'sms_id' => $smsId,
+                          'day' => $day,
+                          'message_status' => 1
+                      ]);
+                }
+              }
+              break;
+              }
+            
+            }
+          }
+        }
+         $i++;
+     }
+    
+  }
+
+ /* sms Cron  function */
+
+
+ public function sendSms1($number ='', $message ='') {
+
+     $accountSid = config('app.twilio')['TWILIO_ACCOUNT_SID'];
+     $authToken = config('app.twilio')['TWILIO_AUTH_TOKEN'];
+     require_once '../vendor/autoload.php';
+         $twilio = new Client($accountSid, $authToken);
+         try {
+         $message = $twilio->messages
+                        ->create($number, // to
+                                 array("from" => "+447480783867", "body" => 'new'.$message)
+                        );
+
+         echo  "sent".$message->sid;
+         $success ="Success";
+         return $success;
+      } catch (\Exception $e) {   
+       echo  "Erro".$e->getCode();
+         $error ="Error";
+         return $error;
+         
+      }
+   }
+
+public function checkSmsSentOrNot($userId = '', $smsId =''){
+  
+  $query = "SELECT * FROM sms_sents WHERE user_id =".$userId." AND sms_id=".$smsId;
+  $output = DB::select($query);   
+  return $output;
+}
+public function getmessgae($smsId =''){
+  
+  $query = "SELECT * FROM sms WHERE id =".$smsId;
+  $output = DB::select($query);   
+  return $output;
+}
+public function getNumber($userId =''){
+  
+  $query = "SELECT * FROM users WHERE id =".$userId;
+  $output = DB::select($query);   
+  return $output;
+}
+public function deleteAll(Request $request) {
+    if($request->ajax()){
+
+        $ids = $request->get('sms_id');
+        $res = DB::table("sms")->whereIn('id',explode(",",$ids))->delete();
+        if(!empty($res)) {
+             return response()->json(['success'=>"Sms Deleted successfully."]); 
+          } else {
+             return response()->json(['error'=>"Error While deletion ."]);
+          }
+
+    }
+ }
 
 }

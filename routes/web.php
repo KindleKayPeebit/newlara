@@ -47,9 +47,8 @@ Route::get('/admin/sms/deleteUser/{id}', 'Backend\SmsController@deleteUser');
 Route::get('/admin/sendSms', 'Backend\SmsController@sendSms')->name('admin.sendSms'); ;
 Route::get('/admin/smsCron', 'Backend\SmsController@smsCron')->name('admin.smsCron'); ;
 
+Route::post('/admin/sms/deleteAll', 'Backend\SmsController@deleteAll')->name('admin.sms.deleteAll'); ;
 
 
-
-Route::get('sendSms2','SmsController@sendSms2')->name('sendSms2');
 
 

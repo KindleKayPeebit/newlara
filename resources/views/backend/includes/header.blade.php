@@ -6,6 +6,8 @@
   <link rel="apple-touch-icon" sizes="76x76" href="../assets/img/apple-icon.png">
   <link rel="icon" type="image/png" href="../assets/img/favicon.png">
   <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
+  <meta name="csrf-token" content="{{ csrf_token() }}" />
+
   <title>
    Twilio Follow ups | {{ Request::segment(1)}}
   </title>
@@ -18,7 +20,7 @@
   <!-- CSS Just for demo purpose, don't include it in your project -->
   <link href="{{asset('backend/assets/demo/demo.css')}}" rel="stylesheet" />
   <link href=https://cdnjs.cloudflare.com/ajax/libs/bootstrap-sweetalert/1.0.1/sweetalert.css" rel="stylesheet" />
-   <link href="{{asset('backend/assets/css/bootstrap-datepicker.css')}}" rel="stylesheet" />
+  
 </head>
 
 <body class="">

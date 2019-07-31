@@ -19,13 +19,6 @@
   <script src="{{asset('backend/assets/js/core/popper.min.js')}}"></script>
   <script src="{{asset('backend/assets/js/core/bootstrap-material-design.min.js')}}"></script>
   <script src="{{asset('backend/assets/js/plugins/perfect-scrollbar.jquery.min.js')}}"></script>
-  <script src="{{asset('backend/assets/js/core/jquery.min.js')}}"></script>
-
-
-  <script src="{{asset('backend/assets/js/bootstrap.js')}}" type="text/javascript"></script>
-  <script src="{{asset('backend/assets/js/bootstrap-datepicker.js')}}" type="text/javascript"></script>
-
-
   <!-- Plugin for the momentJs  -->
   <script src="{{asset('backend/assets/js/plugins/moment.min.js')}}"></script>
   <!--  Plugin for Sweet Alert -->
@@ -34,13 +27,13 @@
   <script src="{{asset('backend/assets/js/plugins/jquery.validate.min.js')}}"></script>
   <!-- Plugin for the Wizard, full documentation here: https://github.com/VinceG/twitter-bootstrap-wizard -->
   <script src="{{asset('backend/assets/js/plugins/jquery.bootstrap-wizard.js')}}"></script>
-  <!--	Plugin for Select, full documentation here: http://silviomoreto.github.io/bootstrap-select -->
+  <!--  Plugin for Select, full documentation here: http://silviomoreto.github.io/bootstrap-select -->
   <script src="{{asset('backend/assets/js/plugins/bootstrap-selectpicker.js')}}"></script>
   <!--  Plugin for the DateTimePicker, full documentation here: https://eonasdan.github.io/bootstrap-datetimepicker/ -->
   <script src="{{asset('backend/assets/js/plugins/bootstrap-datetimepicker.min.js')}}"></script>
   <!--  DataTables.net Plugin, full documentation here: https://datatables.net/  -->
   <script src="{{asset('backend/assets/js/plugins/jquery.dataTables.min.js')}}"></script>
-  <!--	Plugin for Tags, full documentation here: https://github.com/bootstrap-tagsinput/bootstrap-tagsinputs  -->
+  <!--  Plugin for Tags, full documentation here: https://github.com/bootstrap-tagsinput/bootstrap-tagsinputs  -->
   <script src="{{asset('backend/assets/js/plugins/bootstrap-tagsinput.js')}}"></script>
   <!-- Plugin for Fileupload, full documentation here: http://www.jasny.net/bootstrap/javascript/#fileinput -->
   <script src="{{asset('backend/assets/js/plugins/jasny-bootstrap.min.js')}}"></script>
@@ -65,11 +58,6 @@
   <!-- Material Dashboard DEMO methods, don't include it in your project! -->
   <script src="{{asset('backend/assets/demo/demo.js')}}"></script>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-sweetalert/1.0.1/sweetalert.min.js"></script>
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datepicker/1.9.0/js/bootstrap-datepicker.min.js"></script>
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/intl-tel-input/8.4.7/js/intlTelInput.js"></script>
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/js/toastr.min.js"></script>
-  <link rel="stylesheet" type="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/css/toastr.min.css">
-
   <script>
     $(document).ready(function() {
       $().ready(function() {
@@ -248,49 +236,51 @@
 
     });
   </script>
-
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/intl-tel-input/8.4.7/js/intlTelInput.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/js/toastr.min.js"></script>
+  <link rel="stylesheet" type="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/css/toastr.min.css">
   <script>
    <?php if(Session::has('success')) { ?>
-         toastr.success("<?php echo Session::get('success') ?>");
+     toastr.success("<?php echo Session::get('success') ?>");
    <?php } else if(Session::has('error')) { ?>
-         toastr.error("<?php echo Session::get('error') ?>");
-    <?php } else if(Session::has('warning')) { ?>
-       toastr.warning("<?php echo Session::get('warning') ?>");
-    <?php } else if(Session::has('info')) { ?>
-       toastr.info("<?php echo Session::get('info') ?>");
-    <?php }?>
-  </script>
-<script>
+     toastr.error("<?php echo Session::get('error') ?>");
+   <?php } else if(Session::has('warning')) { ?>
+     toastr.warning("<?php echo Session::get('warning') ?>");
+   <?php } else if(Session::has('info')) { ?>
+     toastr.info("<?php echo Session::get('info') ?>");
+   <?php }?>
+ </script>
+ <script>
   $(document).ready(function(){
     $('[id^="deleteBtn"]').click(function(){
-       var href = $(this).attr('data-url');
-       Swal.fire({
-        title: 'Are you sure to delete user?',
-        text: "You won't be able to revert this!",
-        type: 'warning',
-        showCancelButton: true,
-        confirmButtonColor: '#3085d6',
-        cancelButtonColor: '#d33',
-        confirmButtonText: 'Yes, delete it!',
-        closeOnConfirm: false,
-        closeOnCancel: true 
-      }).then((result) => {
-        if (result.value) {
-          window.location.href=href;
-        } else  {   return false; }
-       })
-    });
+     var href = $(this).attr('data-url');
+     Swal.fire({
+      title: 'Are you sure to delete user?',
+      text: "You won't be able to revert this!",
+      type: 'warning',
+      showCancelButton: true,
+      confirmButtonColor: '#3085d6',
+      cancelButtonColor: '#d33',
+      confirmButtonText: 'Yes, delete it!',
+      closeOnConfirm: false,
+      closeOnCancel: true 
+    }).then((result) => {
+      if (result.value) {
+        window.location.href=href;
+      } else  {   return false; }
+    })
   });
-   $(document).ready(function(){
+  });
+  $(document).ready(function(){
     $('[id^="blockUnblock"]').click(function(){
-       var href = $(this).attr('data-url');
-       var status = $(this).attr('data-status');
-       if(status ==1) {
-        var title = 'Are you sure to block the user.';
-        var btnmsg ='Yes, block it!'; }
-       else {  var title = 'Are you sure to unblock the user.';
-        var btnmsg ='Yes, unblock it!'; }
-       Swal.fire({
+     var href = $(this).attr('data-url');
+     var status = $(this).attr('data-status');
+     if(status ==1) {
+      var title = 'Are you sure to block the user.';
+      var btnmsg ='Yes, block it!'; }
+      else {  var title = 'Are you sure to unblock the user.';
+      var btnmsg ='Yes, unblock it!'; }
+      Swal.fire({
         title: title,
         text: "You won't be able to revert this!",
         type: 'warning',
@@ -304,14 +294,98 @@
         if (result.value) {
           window.location.href=href;
         } else  {   return false; }
-       })
+      })
     });
   });
-   $(document).ready(function(){
+  $(document).ready(function(){
     $('[id^="deleteBtn1"]').click(function(){
-       var href = $(this).attr('data-url');
-       Swal.fire({
-        title: 'Are you sure to delete sms?',
+     var href = $(this).attr('data-url');
+     Swal.fire({
+      title: 'Are you sure to delete sms?',
+      text: "You won't be able to revert this!",
+      type: 'warning',
+      showCancelButton: true,
+      confirmButtonColor: '#3085d6',
+      cancelButtonColor: '#d33',
+      confirmButtonText: 'Yes, delete it!',
+      closeOnConfirm: false,
+      closeOnCancel: true 
+    }).then((result) => {
+      if (result.value) {
+        window.location.href=href;
+      } else  {   return false; }
+    })
+  });
+  });
+  $(document).ready(function(){
+    $('[id^="blockUnblock1"]').click(function(){
+     var href = $(this).attr('data-url');
+     var status = $(this).attr('data-status');
+     if(status ==1) {
+      var title = 'Are you sure to block the sms.';
+      var btnmsg ='Yes, block it!'; }
+      else {  var title = 'Are you sure to unblock the sms.';
+      var btnmsg ='Yes, unblock it!'; }
+      Swal.fire({
+        title: title,
+        text: "You won't be able to revert this!",
+        type: 'warning',
+        showCancelButton: true,
+        confirmButtonColor: '#3085d6',
+        cancelButtonColor: '#d33',
+        confirmButtonText: btnmsg,
+        closeOnConfirm: false,
+        closeOnCancel: true 
+      }).then((result) => {
+        if (result.value) {
+          window.location.href=href;
+        } else  {   return false; }
+      })
+    });
+  });
+</script>
+<script type="text/javascript">
+  function countChar(val) {
+    var len = val.value.length;
+    if (len >= 1600) {
+      val.value = val.value.substring(0, 1600);
+    } else {
+      var leftlen = 1600 - len;
+      $('#charNum').text('Characters left '+ leftlen);
+    }
+  };
+
+</script>
+
+<script>
+  $(document).on('click', '#select_all', function() {
+    $(".emp_checkbox").prop("checked", this.checked);
+
+    $("#select_count").html($("input.emp_checkbox:checked").length+" Selected");
+  });
+  $(document).on('click', '.emp_checkbox', function() {
+    if ($('.emp_checkbox:checked').length == $('.emp_checkbox').length) {
+      $('#select_all').prop('checked', true);
+      
+    } else {
+      $('#select_all').prop('checked', false);
+
+    }
+    $("#select_count").html($("input.emp_checkbox:checked").length+" Selected");
+  });
+</script>
+<script>
+  $('#delete_records').on('click', function(e) {
+    var employee = [];
+    $(".emp_checkbox:checked").each(function() {
+       employee.push($(this).data('emp-id'));
+    });
+    if(employee.length <=0) { 
+      Swal("Please select records."); } 
+      else { WRN_PROFILE_DELETE = "Are you sure you want to delete "+(employee.length>1?"these":"this")+" records?";
+
+      Swal.fire({
+        title: WRN_PROFILE_DELETE,
         text: "You won't be able to revert this!",
         type: 'warning',
         showCancelButton: true,
@@ -322,60 +396,34 @@
         closeOnCancel: true 
       }).then((result) => {
         if (result.value) {
-          window.location.href=href;
-        } else  {   return false; }
-       })
-    });
-  });
-   $(document).ready(function(){
-    $('[id^="blockUnblock1"]').click(function(){
-       var href = $(this).attr('data-url');
-       var status = $(this).attr('data-status');
-       if(status ==1) {
-        var title = 'Are you sure to block the sms.';
-        var btnmsg ='Yes, block it!'; }
-       else {  var title = 'Are you sure to unblock the sms.';
-        var btnmsg ='Yes, unblock it!'; }
-       Swal.fire({
-        title: title,
-        text: "You won't be able to revert this!",
-        type: 'warning',
-        showCancelButton: true,
-        confirmButtonColor: '#3085d6',
-        cancelButtonColor: '#d33',
-        confirmButtonText: btnmsg,
-        closeOnConfirm: false,
-        closeOnCancel: true 
-      }).then((result) => {
-        if (result.value) {
-          window.location.href=href;
-        } else  {   return false; }
-       })
-    });
+         var selected_values = employee.join(",");
+         $.ajax({
+          type: "POST",
+          url: "<?= route('admin.sms.deleteAll'); ?>",
+          cache:false,
+          data: {sms_id: selected_values, _token: '{{ csrf_token()}}'},
+          success: function(response) {
+        // remove deleted employee rows
+            if(response.success != '' || response.success != undefined) {
+                toastr.success(response.success);
+                 setTimeout(function(){
+                     window.location.reload();
+                  }, 1000);
+             } else if(response.error != '' || response.error != undefined) {
+               toastr.error(response.error);
+                  setTimeout(function(){
+                     window.location.reload();
+                  }, 1000);
+             }
+            }
+         });
+         }  else {  
+                $('#select_all').prop('checked', false);
+                $('.emp_checkbox').prop('checked', false);
+      }
+    })
+    } 
   });
 </script>
-<script type="text/javascript">
-  function countChar(val, id) {
-        var len = val.value.length;
-        if (len >= 1600) {
-          val.value = val.value.substring(0, 1600);
-        } else {
-          var leftlen = 1600 - len;
-          $('#'+id).text('Characters left '+ leftlen);
-        }
-      };
-
-</script>
-<script type="text/javascript">
-   $('#datepicker').datepicker({
-       weekStart:1,
-       color: 'red'
-   });
-    $('#datepicker1').datepicker({
-       weekStart:1,
-       color: 'red'
-   });
-  </script>
-
 </body>
 </html>

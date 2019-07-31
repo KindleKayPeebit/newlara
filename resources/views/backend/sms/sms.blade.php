@@ -29,20 +29,39 @@
                    @if(!empty($sms))
                     <table class="table">
                       <thead class=" text-primary">
+                        <th>
+                         <div class="form-check">
+                              <label class="form-check-label">
+                                <input class="form-check-input" type="checkbox" value="" id="select_all">
+                                <span class="form-check-sign">
+                                  <span class="check"></span>
+                                </span>
+                              </label>
+                          </div>
+                        </th>
                         <th> S.No</th>
                         <th> Title </th>
                         <th> Message </th>
-                        <th> Status </th>
                         <th> Action </th>
                       </thead>
                       <tbody>
                     <?php $i =0;?>
                      @foreach($sms as $value)
-                        <tr>
+                        <tr id="{{$value->id}}">
+                          <td>
+                            <div class="form-check">
+                              <label class="form-check-label">
+                                <input class="form-check-input emp_checkbox" type="checkbox" value="" data-emp-id="{{$value->id}}">
+                                <span class="form-check-sign">
+                                  <span class="check"></span>
+                                </span>
+                              </label>
+                            </div>
+                          </td>
                           <td><?= ++$i; ?></td>
                           <td>{{$value->title}}</td>
-                          <td>{{$value->message}}</td>
-                          <td>@if($value->status ==1){{ 'Un-blocked '}}@else {{'Blocked'}}@endif </td>
+                          <td>{{ substr($value->message, 0,30) }}</td>
+                          
                            <td class="td-actions ">
                               <a href="{{ url('/admin/sms/edit', $value->id) }}" rel="tooltip" title="Edit SMS" class="btn btn-primary btn-link btn-sm">
                                 <i class="material-icons">edit</i> </a>
@@ -60,7 +79,13 @@
                        @endforeach
                       </tbody>
                     </table>
-                    {!! $sms->render() !!}
+                    @if(count($sms) > 0)
+                      <div class="col-md-2">
+                      <!-- <span class="rows_selected" id="select_count">0 Selected</span> -->
+                        <a href="javascript:void(0);" id="delete_records" class="btn btn-primary pull-right">Delete All</a>
+                      </div>
+                    @endif
+                   {!! $sms->render() !!}
                     @else
                       <div class="alert alert- alert-with-icon" data-notify="container">
                       <i class="material-icons" data-notify="icon">add_alert</i>
