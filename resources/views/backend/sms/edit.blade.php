@@ -33,7 +33,6 @@
                         </div>
                       </div>
                     </div>
-                   
                     <a href="{{route('admin.sms')}}" class="btn btn-warning pull-right">Back</a>
                     <button type="submit" class="btn btn-primary ">Update SMS</button>
                     <div class="clearfix"></div>

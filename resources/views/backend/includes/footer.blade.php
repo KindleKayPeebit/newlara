@@ -403,7 +403,6 @@
           cache:false,
           data: {sms_id: selected_values, _token: '{{ csrf_token()}}'},
           success: function(response) {
-        // remove deleted employee rows
             if(response.success != '' || response.success != undefined) {
                 toastr.success(response.success);
                  setTimeout(function(){

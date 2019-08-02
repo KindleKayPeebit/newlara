@@ -16,7 +16,7 @@
                       <div class="col-md-12">
                         <div class="form-group">
                           <label class="bmd-label-floating">Title</label>
-                          <input type="text" name="title" class="form-control" value="{{ old('title') }}">
+                          <input type="text" name="title" class="form-control" value="{{ old('title') }}" >
                         </div>
                       </div>
                     </div>
@@ -27,28 +27,12 @@
                           <label>Message</label>
                           <div class="form-group">
                             <label class="bmd-label-floating">Maximum 1600 Characters</label>
-                            <textarea class="form-control" rows="5" name="message" onkeyup="countChar(this)">{{  old('message') }}</textarea>
+                            <textarea class="form-control" rows="5" name="message" onkeyup="countChar(this)" >{{  old('message') }}</textarea>
                             <div id="charNum"></div>
                           </div>
                         </div>
                       </div>
                     </div>
-                    
-                  <!--   <div class="row">
-                      <div class="col-md-6">
-                        <div class="form-group">
-                          <label class="bmd-label-floating">Start Date</label>
-                          <input type="text" name="start_date" class="form-control" value="" id="datepicker">
-                        </div>
-                      </div>
-                        <div class="col-md-6">
-                        <div class="form-group">
-                          <label class="bmd-label-floating">End Date</label>
-                          <input type="text" name="end_date" class="form-control" value="" id="datepicker1">
-                        </div>
-                     
-                    </div>
-                  </div> -->
                     <a href="{{route('admin.sms')}}" class="btn btn-warning pull-right">Back</a>
                     <button type="submit" class="btn btn-primary ">Add SMS</button>
                     <div class="clearfix"></div>

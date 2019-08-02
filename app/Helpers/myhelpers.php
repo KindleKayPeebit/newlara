@@ -2,6 +2,7 @@
 
 namespace App\Helpers;
 use Route;
+use DB;
 
 class Myhelpers
 {
@@ -19,22 +20,21 @@ class Myhelpers
     {
         if (Route::currentRouteName() == $route) return $output;
     }
-    public static function sendSms1($number) {
+    /*
+     * Common function to get data.
+     */
+   
+    public static function getData($userId ='', $smsId='')
+    {
+        if(!empty($userId) && !empty($smsId))
+          $whereCondition = "user_id =".$userId." AND sms_id=".$smsId;
+        if(!empty($smsId))
+            $whereCondition = "sms_id=".$smsId;
+          
+          $query = "SELECT * FROM ".$table." WHERE ".$whereCondition;
+          $output = DB::select($query);   
+          return $output;
+    }
+    
 
-         $accountSid = config('app.twilio')['TWILIO_ACCOUNT_SID'];
-         $authToken = config('app.twilio')['TWILIO_AUTH_TOKEN'];
-         try {
-             $client = new Client(['auth' => [$accountSid, $authToken]]);
-             $result = $client->post('https://api.twilio.com/2010-04-01/Accounts/'.$accountSid.'/Messages.json',
-             ['form_params' => [
-             'Body' => 'Your number is verified and successfully registerd with us.', //set message body
-             'To' => $number,
-             'From' => '+447480783867' //we get this number from twilio
-             ]]);
-             return $result;
-         }
-         catch (Exception $e) {
-              echo "Error: " . $e->getMessage();
-        }
-     }
 }

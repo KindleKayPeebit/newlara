@@ -12,7 +12,7 @@ class Sms_sent extends Model
      * @var array
      */
     protected $fillable = [
-        'user_id', 'sms_map_id'
+        'user_id', 'sms_id'
     ];
    
 }

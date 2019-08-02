@@ -10,7 +10,7 @@
               {{ csrf_field() }}
               <div class="input-group">
                 <input type="text" class="form-control" name="q"
-                    placeholder="Search sms"> <span class="input-group-btn">
+                    placeholder="Search sms" required> <span class="input-group-btn">
                     <button type="submit" class="btn btn-primary">
                         <i class="material-icons">search</i>
                     </button>
@@ -79,7 +79,7 @@
                        @endforeach
                       </tbody>
                     </table>
-                    @if(count($sms) > 0)
+                    @if(count($sms) > 1)
                       <div class="col-md-2">
                       <!-- <span class="rows_selected" id="select_count">0 Selected</span> -->
                         <a href="javascript:void(0);" id="delete_records" class="btn btn-primary pull-right">Delete All</a>
